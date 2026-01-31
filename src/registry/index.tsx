@@ -183,5 +183,69 @@ export const registry: Record<string, RegistryComponent> = {
       "Ajuste o `radius` e `duration` conforme a necessidade da sua UI."
     ],
     usageExample: "import { CircularText } from '@/components/blocks/circular-text';\n\n<CircularText \n  text='RECURSO ORGANIZADO • ' \n  radius={100} \n  duration={20}\n/>"
+  },
+  // UI PRIMITIVES
+  "button": {
+    name: "Button",
+    description: "Botão base com múltiplas variantes e suporte a animações.",
+    component: require("@/components/ui/button/button").Button,
+    file: "src/components/ui/button/button.tsx",
+    type: "ui",
+    dependencies: ["class-variance-authority"],
+    installationSteps: ["Instale CVA: `npm install class-variance-authority`"]
+  },
+  "badge": {
+    name: "Badge",
+    description: "Indicador visual de status ou categoria.",
+    component: require("@/components/ui/badge/badge").Badge,
+    file: "src/components/ui/badge/badge.tsx",
+    type: "ui",
+    dependencies: ["class-variance-authority"]
+  },
+  "card": {
+    name: "Card",
+    description: "Container básico para estruturar conteúdo.",
+    component: require("@/components/ui/card/card").Card,
+    file: "src/components/ui/card/card.tsx",
+    type: "ui"
+  },
+  "avatar": {
+    name: "Avatar",
+    description: "Componente de imagem de perfil com fallback.",
+    component: require("@/components/ui/avatar/avatar").Avatar,
+    file: "src/components/ui/avatar/avatar.tsx",
+    type: "ui",
+    dependencies: ["@radix-ui/react-avatar"]
+  },
+  "input": {
+    name: "Input",
+    description: "Campo de entrada de texto estilizado.",
+    component: require("@/components/ui/input/input").Input,
+    file: "src/components/ui/input/input.tsx",
+    type: "ui"
+  },
+  "label": {
+    name: "Label",
+    description: "Rótulo acessível para campos de formulário.",
+    component: require("@/components/ui/label/label").Label,
+    file: "src/components/ui/label/label.tsx",
+    type: "ui",
+    dependencies: ["@radix-ui/react-label"]
+  },
+  "sheet": {
+    name: "Sheet",
+    description: "Painel lateral (drawer) para navegação ou formulários.",
+    component: require("@/components/ui/sheet/sheet").Sheet,
+    file: "src/components/ui/sheet/sheet.tsx",
+    type: "ui",
+    dependencies: ["@radix-ui/react-dialog", "framer-motion"]
+  },
+  "utils": {
+    name: "Utils",
+    description: "Utilitário cn para merge de classes Tailwind.",
+    component: null as any,
+    file: "src/lib/utils.ts",
+    type: "ui",
+    dependencies: ["clsx", "tailwind-merge"]
   }
 };

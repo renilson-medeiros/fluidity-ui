@@ -1,13 +1,22 @@
 {
-  "name": "temp_app",
-  "version": "0.1.0",
-  "private": true,
-  "bin": {
-    "fluidity-ui": "./src/cli/index.ts"
+  "name": "fluidity-ui",
+  "version": "0.1.2",
+  "description": "Premium component library for Next.js - Aesthetic-First, CLI-Driven.",
+  "publishConfig": {
+    "access": "public"
   },
+  "bin": {
+    "fluidity-ui": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "public/registry.json"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:cli": "tsup src/cli/index.ts --format cjs --clean --minify --shims",
+    "prepublishOnly": "npm run build:cli",
     "start": "next start",
     "lint": "eslint"
   },
@@ -74,6 +83,7 @@
     "prompts": "^2.4.2",
     "tailwindcss": "^4",
     "tailwindcss-animate": "^1.0.7",
+    "tsup": "^8.5.1",
     "typescript": "^5"
   }
 }

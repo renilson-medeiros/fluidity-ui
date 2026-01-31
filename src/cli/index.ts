@@ -6,12 +6,23 @@ import fs from "fs-extra";
 import path from "path";
 import ora from "ora";
 
+const REGISTRY_URL = "https://raw.githubusercontent.com/renilson-medeiros/fluidity-ui/main/public/registry.json";
+const BASE_URL = "https://raw.githubusercontent.com/renilson-medeiros/fluidity-ui/main";
+
 const program = new Command();
 
 program
   .name("fluidity-ui")
   .description("CLI para gerenciar componentes Fluidity UI")
-  .version("0.1.0");
+  .version("0.1.2");
+
+async function downloadFile(url: string, targetPath: string) {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`Erro ao baixar ${url}`);
+  const content = await response.text();
+  await fs.ensureDir(path.dirname(targetPath));
+  await fs.writeFile(targetPath, content);
+}
 
 program
   .command("init")
@@ -32,6 +43,12 @@ program
         message: "Onde está o seu arquivo de utilitários (cn)?",
         initial: "src/lib/utils.ts",
       },
+      {
+        type: "confirm",
+        name: "installBase",
+        message: "Deseja instalar os componentes UI base (Button, Badge, Card, etc.)?",
+        initial: true,
+      }
     ]);
 
     const spinner = ora("Configurando o projeto...").start();
@@ -46,10 +63,25 @@ program
         spaces: 2,
       });
 
-      // Simulação de instalação de dependências ou criação de arquivos base
+      // 1. Instalar Utilitários (cn)
+      spinner.text = "Injetando utilitários (cn)...";
+      await downloadFile(`${BASE_URL}/src/lib/utils.ts`, path.join(process.cwd(), config.utilsPath));
+
+      // 2. Instalar Componentes Base se solicitado
+      if (response.installBase) {
+        spinner.text = "Baixando componentes base...";
+        const baseComponents = ["button", "badge", "card", "avatar", "input", "label", "sheet"];
+        
+        for (const comp of baseComponents) {
+          spinner.text = `Instalando ${comp}...`;
+          await downloadFile(`${BASE_URL}/src/components/ui/${comp}/${comp}.tsx`, path.join(process.cwd(), config.componentsDir, `${comp}.tsx`));
+        }
+      }
+
       spinner.succeed(chalk.green("Projeto inicializado com sucesso!"));
       console.log(chalk.cyan("\nPróximos passos:"));
-      console.log(`- Rode ${chalk.bold("npx fluidity-ui add [componente]")} para adicionar um bloco.`);
+      console.log(`- Configure o local das fontes se necessário.`);
+      console.log(`- Rode ${chalk.bold("npx fluidity-ui add [componente-animado]")} para adicionar blocos interativos.`);
     } catch (error) {
       spinner.fail(chalk.red("Erro ao inicializar o projeto."));
       console.error(error);
@@ -61,12 +93,9 @@ program
   .description("Adiciona um componente ao projeto")
   .argument("<component>", "Nome do componente a ser adicionado")
   .action(async (componentName) => {
-    const spinner = ora(`Buscando componente ${componentName}...`).start();
+    const spinner = ora(`Buscando registro de componentes...`).start();
 
     try {
-      // Aqui buscaríamos no registry.json que geramos
-      const registryPath = path.join(__dirname, "../../public/registry.json");
-      
       // Check if project is initialized
       if (!fs.existsSync(path.join(process.cwd(), "fluidity.json"))) {
         spinner.fail(chalk.red("Projeto não inicializado. Rode 'npx fluidity-ui init' primeiro."));
@@ -75,16 +104,14 @@ program
 
       const config = await fs.readJSON(path.join(process.cwd(), "fluidity.json"));
       
-      // In a real scenario, we would fetch this via HTTP or bundle it
-      let registry;
-      if (fs.existsSync(registryPath)) {
-        registry = await fs.readJSON(registryPath);
-      } else {
-        // Fallback or fetch from remote
-         spinner.fail(chalk.red("Registro não encontrado localmente."));
-         return;
+      // Fetch registry from GitHub
+      const registryResponse = await fetch(REGISTRY_URL);
+      if (!registryResponse.ok) {
+        spinner.fail(chalk.red(`Não foi possível baixar o registro de componentes via GitHub.`));
+        return;
       }
-
+      
+      const registry = await registryResponse.json() as any;
       const item = registry[componentName];
 
       if (!item) {
@@ -92,26 +119,16 @@ program
         return;
       }
 
-      spinner.text = `Baixando ${item.name}...`;
+      spinner.text = `Baixando código de ${item.name}...`;
 
-      // Simulação de cópia de arquivo
-      // Em uma CLI real, baixaríamos o conteúdo do arquivo via 'file' path do registry
-      const targetPath = path.join(process.cwd(), config.componentsDir, `${componentName}.tsx`);
-      
-      // Nota: Em produção, o 'file' apontaria para uma URL ou o conteúdo estaria no JSON
-      // Para este protótipo, vamos assumir que os arquivos estão acessíveis no repo
-      const sourcePath = path.join(process.cwd(), item.file);
+      // Fetch component code from GitHub
+      const fileUrl = `${BASE_URL}/${item.file}`;
+      await downloadFile(fileUrl, path.join(process.cwd(), config.componentsDir, `${componentName}.tsx`));
 
-      if (fs.existsSync(sourcePath)) {
-          await fs.ensureDir(path.dirname(targetPath));
-          await fs.copy(sourcePath, targetPath);
-          spinner.succeed(chalk.green(`Componente ${item.name} adicionado com sucesso em ${targetPath}`));
-      } else {
-          spinner.fail(chalk.red(`Arquivo fonte não encontrado em ${sourcePath}`));
-      }
+      spinner.succeed(chalk.green(`Componente ${item.name} adicionado com sucesso em ${config.componentsDir}`));
 
     } catch (error) {
-      spinner.fail(chalk.red("Erro ao adicionar componente."));
+      spinner.fail(chalk.red("Erro ao processar o comando."));
       console.error(error);
     }
   });

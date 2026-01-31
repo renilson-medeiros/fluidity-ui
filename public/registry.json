@@ -186,5 +186,76 @@
       "Ajuste o `radius` e `duration` conforme a necessidade da sua UI."
     ],
     "usageExample": "import { CircularText } from '@/components/blocks/circular-text';\n\n<CircularText \n  text='RECURSO ORGANIZADO • ' \n  radius={100} \n  duration={20}\n/>"
+  },
+  "button": {
+    "name": "Button",
+    "description": "Botão base com múltiplas variantes e suporte a animações.",
+    "file": "src/components/ui/button/button.tsx",
+    "type": "ui",
+    "dependencies": [
+      "class-variance-authority"
+    ],
+    "installationSteps": [
+      "Instale CVA: `npm install class-variance-authority`"
+    ]
+  },
+  "badge": {
+    "name": "Badge",
+    "description": "Indicador visual de status ou categoria.",
+    "file": "src/components/ui/badge/badge.tsx",
+    "type": "ui",
+    "dependencies": [
+      "class-variance-authority"
+    ]
+  },
+  "card": {
+    "name": "Card",
+    "description": "Container básico para estruturar conteúdo.",
+    "file": "src/components/ui/card/card.tsx",
+    "type": "ui"
+  },
+  "avatar": {
+    "name": "Avatar",
+    "description": "Componente de imagem de perfil com fallback.",
+    "file": "src/components/ui/avatar/avatar.tsx",
+    "type": "ui",
+    "dependencies": [
+      "@radix-ui/react-avatar"
+    ]
+  },
+  "input": {
+    "name": "Input",
+    "description": "Campo de entrada de texto estilizado.",
+    "file": "src/components/ui/input/input.tsx",
+    "type": "ui"
+  },
+  "label": {
+    "name": "Label",
+    "description": "Rótulo acessível para campos de formulário.",
+    "file": "src/components/ui/label/label.tsx",
+    "type": "ui",
+    "dependencies": [
+      "@radix-ui/react-label"
+    ]
+  },
+  "sheet": {
+    "name": "Sheet",
+    "description": "Painel lateral (drawer) para navegação ou formulários.",
+    "file": "src/components/ui/sheet/sheet.tsx",
+    "type": "ui",
+    "dependencies": [
+      "@radix-ui/react-dialog",
+      "framer-motion"
+    ]
+  },
+  "utils": {
+    "name": "Utils",
+    "description": "Utilitário cn para merge de classes Tailwind.",
+    "file": "src/lib/utils.ts",
+    "type": "ui",
+    "dependencies": [
+      "clsx",
+      "tailwind-merge"
+    ]
   }
 }
