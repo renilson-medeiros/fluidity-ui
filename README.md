@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fluidity UI
 
-## Getting Started
+Fluidity UI é uma biblioteca de componentes **Aesthetic-First** construída com **Next.js**, **Tailwind CSS** e **Framer Motion**. Focada em interfaces modernas, animações suaves e alta performance.
 
-First, run the development server:
+## ✨ Características
+
+- 🎨 **Estética Premium**: Componentes desenhados para impressionar.
+- 🚀 **CLI Poderosa**: Instale e adicione componentes diretamente no seu projeto.
+- 📱 **Responsivo**: Design adaptável para qualquer dispositivo.
+- ⚡ **Performance**: Otimizado para Core Web Vitals.
+- 🌑 **Dark Mode**: Suporte nativo a temas claro e escuro.
+
+## 🛠️ CLI do Fluidity UI
+
+A maneira mais rápida de começar a usar o Fluidity UI é através da nossa linha de comando.
+
+### 1. Inicializar o projeto
+
+Configure seu projeto para usar os componentes da Fluidity UI:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npx fluidity-ui init
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Adicionar componentes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Escolha um componente e adicione-o instantaneamente:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npx fluidity-ui add [component-name]
+```
 
-## Learn More
+## 🚀 Desenvolvimento Local
 
-To learn more about Next.js, take a look at the following resources:
+Se você deseja contribuir ou testar os componentes no ambiente de desenvolvimento:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+# Instalar dependências
+npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Rodar o servidor de desenvolvimento
+npm run dev
+```
 
-## Deploy on Vercel
+Abra [http://localhost:3000](http://localhost:3000) no seu navegador.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📚 Tecnologias Utilizadas
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Next.js 15+** (App Router)
+- **Tailwind CSS v4**
+- **Framer Motion**
+- **Lucide React** (Ícones)
+- **Radix UI** (Primitivos de acessibilidade)
+
+## 📖 Documentação
+
+Para mais detalhes sobre cada componente e guias de instalação, visite nossa [Página de Documentação](http://localhost:3000/docs).
+
+---
+
+Criado com foco em detalhes e paixão por UI.

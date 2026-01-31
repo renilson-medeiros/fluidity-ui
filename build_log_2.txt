@@ -1,0 +1,32 @@
+
+> temp_app@0.1.0 build
+> next build
+
+▲ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 11.8s
+  Running TypeScript ...
+Failed to compile.
+
+./src/components/ui/sheet/sheet.tsx:99:23
+Type error: Type '{ hidden: { opacity: number; x: number; y: number; }; visible: { opacity: number; x: number; y: number; transition: { duration: number; ease: string; }; }; }' is not assignable to type 'Variants'.
+  Property 'visible' is incompatible with index signature.
+    Type '{ opacity: number; x: number; y: number; transition: { duration: number; ease: string; }; }' is not assignable to type 'Variant'.
+      Type '{ opacity: number; x: number; y: number; transition: { duration: number; ease: string; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ opacity: number; x: number; y: number; transition: { duration: number; ease: string; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ duration: number; ease: string; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ duration: number; ease: string; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ duration: number; ease: string; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'ease' are incompatible.
+                    Type 'string' is not assignable to type 'Easing | Easing[] | undefined'.
+
+[0m [90m  97 |[39m           className[33m=[39m[32m"h-full flex flex-col"[39m
+ [90m  98 |[39m         [33m>[39m
+[31m[1m>[22m[39m[90m  99 |[39m           [33m<[39m[33mmotion[39m[33m.[39mdiv variants[33m=[39m{itemVariants}[33m>[39m
+ [90m     |[39m                       [31m[1m^[22m[39m
+ [90m 100 |[39m             {children}
+ [90m 101 |[39m           [33m<[39m[33m/[39m[33mmotion[39m[33m.[39mdiv[33m>[39m
+ [90m 102 |[39m         [33m<[39m[33m/[39m[33mmotion[39m[33m.[39mdiv[33m>[39m[0m
+Next.js build worker exited with code: 1 and signal: null
