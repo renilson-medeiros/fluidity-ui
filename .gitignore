@@ -42,5 +42,4 @@ next-env.d.ts
 
 # fluidity ui
 fluidity.json
-public/registry.json
 build_log*

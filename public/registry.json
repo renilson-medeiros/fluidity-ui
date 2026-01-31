@@ -1,0 +1,190 @@
+{
+  "text-reveal": {
+    "name": "Text Reveal",
+    "description": "Animação de letras surgindo ao fazer scroll, ideal para frases de impacto.",
+    "file": "src/components/blocks/text-reveal.tsx",
+    "type": "block",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "props": {
+      "text": "O Fluidity UI é uma biblioteca de componentes práticos para criar interfaces de alta qualidade e acessíveis."
+    },
+    "installationSteps": [
+      "Instale o Framer Motion: `npm install framer-motion`",
+      "Copie o arquivo `src/components/blocks/text-reveal.tsx`.",
+      "Certifique-se de ter o utilitário `cn` para merge de classes."
+    ],
+    "usageExample": "import { TextReveal } from '@/components/blocks/text-reveal';\n\nexport default function Demo() {\n  return (\n    <div className='min-h-[200vh] py-24'>\n      <TextReveal \n        text='Sua mensagem aqui' \n        className='text-vibrant-blue'\n      />\n    </div>\n  );\n}"
+  },
+  "infinite-text-loop": {
+    "name": "Infinite Text Loop",
+    "description": "Um marquee de texto que desliza infinitamente baseado na posição do scroll.",
+    "file": "src/components/blocks/infinite-text-loop.tsx",
+    "type": "block",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "props": {
+      "text": "LOOP INFINITO • FLUIDITY UI • NEXT.JS • "
+    },
+    "installationSteps": [
+      "Instale o Framer Motion: `npm install framer-motion`",
+      "Copie `src/components/blocks/infinite-text-loop.tsx`.",
+      "Garanta que o container pai tenha `overflow-hidden`."
+    ],
+    "usageExample": "import { InfiniteTextLoop } from '@/components/blocks/infinite-text-loop';\n\n<InfiniteTextLoop \n  text='TEXTO EM MOVIMENTO • ' \n  direction={1} \n  baseVelocity={5} \n/>"
+  },
+  "horizontal-project-scroll": {
+    "name": "Horizontal Project Scroll",
+    "description": "Layout de scroll horizontal em tela cheia para apresentações de portfólio premium.",
+    "file": "src/components/blocks/horizontal-project-scroll.tsx",
+    "type": "block",
+    "dependencies": [
+      "framer-motion",
+      "lucide-react"
+    ],
+    "installationSteps": [
+      "Instale: `npm install framer-motion lucide-react`",
+      "Copie: `horizontal-project-scroll.tsx`, `project-cursor.tsx` e `circular-text.tsx`.",
+      "Adicione as imagens dos seus projetos no array dentro do componente."
+    ],
+    "usageExample": "import { HorizontalProjectScroll } from '@/components/blocks/horizontal-project-scroll';\n\n// A altura do container controla a velocidade do scroll\n<div className='h-[300vh]'>\n  <HorizontalProjectScroll />\n</div>"
+  },
+  "cursor-demo": {
+    "name": "Cursor Demo",
+    "description": "Seguidor de cursor personalizado projetado para containers específicos.",
+    "file": "src/components/blocks/cursor-demo.tsx",
+    "type": "block",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "installationSteps": [
+      "Copie `src/components/ui/project-cursor.tsx`.",
+      "Use `useRef` para capturar o container onde o cursor deve atuar.",
+      "Passe a ref para o componente `<ProjectCursor containerRef={ref} />`."
+    ],
+    "usageExample": "import { ProjectCursor } from '@/components/ui/project-cursor';\nimport { useRef } from 'react';\n\nconst containerRef = useRef(null);\n\n<div ref={containerRef} className='cursor-none relative h-[400px]'>\n  <ProjectCursor \n     containerRef={containerRef} \n     text='VER'\n     className='bg-black text-white'\n  />\n</div>"
+  },
+  "hero-section": {
+    "name": "Hero Section",
+    "description": "Seção de impacto com layout dividido e animações sincronizadas.",
+    "file": "src/components/blocks/hero-section.tsx",
+    "type": "block",
+    "dependencies": [
+      "framer-motion",
+      "lucide-react"
+    ],
+    "installationSteps": [
+      "Instale: `npm install framer-motion lucide-react`",
+      "Copie `src/components/blocks/hero-section.tsx`.",
+      "Configure as cores secundárias no seu `tailwind.config.js` se necessário."
+    ],
+    "usageExample": "import { HeroSection } from '@/components/blocks/hero-section';\n\n<HeroSection />"
+  },
+  "project-showcase": {
+    "name": "Project Showcase",
+    "description": "Grade adaptativa para exibir projetos profissionais com badges.",
+    "file": "src/components/blocks/project-showcase.tsx",
+    "type": "block",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "installationSteps": [
+      "Copie `src/components/blocks/project-showcase.tsx`.",
+      "Atualize a constante `PROJECTS` com seus dados reais."
+    ],
+    "usageExample": "import ProjectShowcase from '@/components/blocks/project-showcase';\n\n<ProjectShowcase />"
+  },
+  "feature-grid": {
+    "name": "Feature Grid",
+    "description": "Layout inspirado em bento-grids para destaques de produto.",
+    "file": "src/components/blocks/feature-grid-demo.tsx",
+    "type": "block",
+    "dependencies": [
+      "framer-motion",
+      "lucide-react"
+    ],
+    "installationSteps": [
+      "Copie `src/components/blocks/feature-grid.tsx`.",
+      "Passe um array de objetos respeitando a interface `Feature`."
+    ],
+    "usageExample": "import { FeatureGrid } from '@/components/blocks/feature-grid';\nimport { Box } from 'lucide-react';\n\nconst recursos = [\n  { title: 'Core', description: '...', icon: <Box /> }\n];\n\n<FeatureGrid features={recursos} />"
+  },
+  "interactive-testimonials": {
+    "name": "Interactive Testimonials",
+    "description": "Carrossel de depoimentos com suporte a drag e animações suaves.",
+    "file": "src/components/blocks/interactive-testimonials.tsx",
+    "type": "block",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "installationSteps": [
+      "Instale: `npm install framer-motion`.",
+      "Copie `src/components/blocks/interactive-testimonials.tsx`."
+    ],
+    "usageExample": "import { InteractiveTestimonials } from '@/components/blocks/interactive-testimonials';\n\n<InteractiveTestimonials />"
+  },
+  "pricing-section": {
+    "name": "Pricing Section",
+    "description": "Tabelas de preços modernas e claras.",
+    "file": "src/components/blocks/pricing-section.tsx",
+    "type": "block",
+    "dependencies": [
+      "framer-motion",
+      "lucide-react"
+    ],
+    "installationSteps": [
+      "Copie `src/components/blocks/pricing-section.tsx`.",
+      "Ajuste os valores e planos no array de dados do componente."
+    ],
+    "usageExample": "import { PricingSection } from '@/components/blocks/pricing-section';\n\n<PricingSection />"
+  },
+  "floating-nav": {
+    "name": "Floating Nav",
+    "description": "Barra de navegação inteligente que reage à rolagem.",
+    "file": "src/components/blocks/floating-nav.tsx",
+    "type": "block",
+    "dependencies": [
+      "framer-motion",
+      "lucide-react"
+    ],
+    "installationSteps": [
+      "Copie `src/components/blocks/floating-nav.tsx`.",
+      "Renderize no seu arquivo principal de Layout."
+    ],
+    "usageExample": "import { FloatingNav } from '@/components/blocks/floating-nav';\n\n<FloatingNav />"
+  },
+  "scrolling-gallery": {
+    "name": "Scrolling Gallery",
+    "description": "Galeria de imagens imersiva com efeitos de profundidade.",
+    "file": "src/components/blocks/scrolling-gallery.tsx",
+    "type": "block",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "installationSteps": [
+      "Copie `src/components/blocks/scrolling-gallery.tsx`.",
+      "Use imagens em alta definição para um melhor efeito de profundidade."
+    ],
+    "usageExample": "import { ScrollingGallery } from '@/components/blocks/scrolling-gallery';\n\n<ScrollingGallery />"
+  },
+  "circular-text": {
+    "name": "Circular Text",
+    "description": "Animação de texto em círculo baseada em SVG.",
+    "file": "src/components/blocks/circular-text.tsx",
+    "type": "block",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "props": {
+      "text": "TEXTO CIRCULAR • ANIMAÇÃO • ",
+      "radius": 80
+    },
+    "installationSteps": [
+      "Copie `src/components/blocks/circular-text.tsx`.",
+      "Ajuste o `radius` e `duration` conforme a necessidade da sua UI."
+    ],
+    "usageExample": "import { CircularText } from '@/components/blocks/circular-text';\n\n<CircularText \n  text='RECURSO ORGANIZADO • ' \n  radius={100} \n  duration={20}\n/>"
+  }
+}
