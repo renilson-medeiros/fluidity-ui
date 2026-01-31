@@ -26,45 +26,69 @@ export default function DocsPage() {
             </p>
           </div>
 
-          {/* Quick Start Section */}
-          <section className="space-y-8">
+          {/* CLI Section - RECOMMENDED */}
+          <section className="space-y-8 scroll-mt-24" id="cli">
             <div className="flex items-center gap-3 border-b border-border pb-4">
-               <Zap className="w-5 h-5 text-foreground" />
-               <h2 className="text-2xl font-bold uppercase tracking-tight">Início Rápido</h2>
+               <Terminal className="w-5 h-5 text-foreground" />
+               <h2 className="text-2xl font-bold uppercase tracking-tight">Caminho Recomendado: Fluidity CLI</h2>
+            </div>
+            
+            <p className="text-muted-foreground text-sm font-light leading-relaxed max-w-2xl">
+              Nossa CLI oficial automatiza 100% da configuração. Ela configura seus utilitários, instala dependências e injeta o código diretamente no seu projeto.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-8">
+               <div className="space-y-4 p-6 rounded-lg border border-border bg-muted/20 relative group overflow-hidden">
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">01. Inicialização</h4>
+                    <Badge variant="outline" className="text-[8px] bg-foreground text-background border-none">Start Here</Badge>
+                  </div>
+                  <pre className="font-mono text-xs overflow-x-auto text-foreground">
+                    npx fluidity-ui init
+                  </pre>
+                  <p className="text-[11px] text-muted-foreground leading-relaxed">
+                    Configura o <code className="font-mono text-[10px]">fluidity.json</code>, injeta o utilitário <code className="font-mono text-[10px]">cn</code> e oferece a instalação dos componentes base.
+                  </p>
+               </div>
+               
+               <div className="space-y-4 p-6 rounded-lg border border-border bg-muted/20 relative group overflow-hidden">
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">02. Add Bulk (Tudo de vez)</h4>
+                    <Badge variant="outline" className="text-[8px]">New</Badge>
+                  </div>
+                  <pre className="font-mono text-xs overflow-x-auto text-foreground">
+                    npx fluidity-ui add --all
+                  </pre>
+                  <p className="text-[11px] text-muted-foreground leading-relaxed">
+                    Ideal para novos projetos. Baixa todos os blocos animados e componentes UI do registro instantaneamente.
+                  </p>
+               </div>
+            </div>
+
+            <div className="space-y-4">
+               <h4 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-1">03. Adicionar por demanda</h4>
+               <div className="flex items-center justify-between p-6 rounded-lg border border-border bg-muted/10 font-mono text-sm group">
+                 <span className="text-muted-foreground group-hover:text-foreground transition-colors overflow-x-auto">npx fluidity-ui add [component-name]</span>
+               </div>
+            </div>
+          </section>
+
+          {/* Quick Start Section - Manual Way */}
+          <section className="space-y-8 opacity-60 hover:opacity-100 transition-opacity">
+            <div className="flex items-center gap-3 border-b border-border pb-4">
+               <Layers className="w-5 h-5 text-foreground" />
+               <h2 className="text-2xl font-bold uppercase tracking-tight">Instalação Manual</h2>
             </div>
             
             <div className="grid gap-12">
                <div className="space-y-4">
                   <h3 className="text-lg font-bold flex items-center gap-2">
                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-foreground text-background text-[10px]">1</span>
-                    Instalação de Dependências
+                    Dependências
                   </h3>
-                  <p className="text-muted-foreground text-sm">
-                    A maioria dos nossos componentes utiliza <code className="bg-foreground/5 px-1.5 py-0.5 rounded font-mono">framer-motion</code> e <code className="bg-foreground/5 px-1.5 py-0.5 rounded font-mono">lucide-react</code>.
-                  </p>
                   <div className="relative group">
                     <pre className="p-6 rounded-lg border border-border bg-muted/30 font-mono text-sm overflow-x-auto">
-                      npm install framer-motion lucide-react clsx tailwind-merge
-                    </pre>
-                  </div>
-               </div>
-
-               <div className="space-y-4">
-                  <h3 className="text-lg font-bold flex items-center gap-2">
-                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-foreground text-background text-[10px]">2</span>
-                    Utilitário de Classes (cn)
-                  </h3>
-                  <p className="text-muted-foreground text-sm">
-                    Certifique-se de ter o utilitário de fusão de classes em <code className="bg-foreground/5 px-1.5 py-0.5 rounded font-mono">src/lib/utils.ts</code>.
-                  </p>
-                  <div className="relative group">
-                    <pre className="p-6 rounded-lg border border-border bg-muted/30 font-mono text-sm overflow-x-auto">
-{`import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}`}
+                      npm install framer-motion lucide-react clsx tailwind-merge class-variance-authority
                     </pre>
                   </div>
                </div>
