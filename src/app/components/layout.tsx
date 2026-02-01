@@ -6,6 +6,9 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { SimpleNavbar } from "@/components/blocks/simple-navbar";
 import { ScrollArea } from "@/components/ui/scroll-area/scroll-area";
+import { ArrowDown, ChevronDown } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function ComponentsLayout({
   children,
@@ -13,6 +16,40 @@ export default function ComponentsLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const sidebarRef = useRef<HTMLDivElement>(null);
+  const [showScrollIndicator, setShowScrollIndicator] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sidebarRef.current) return;
+      
+      const { scrollTop, scrollHeight, clientHeight } = sidebarRef.current;
+      // Mostra o indicador apenas se houver conteúdo para rolar abaixo
+      // Adicionamos uma pequena margem (10px) para evitar problemas de arredondamento
+      const hasMoreToScroll = scrollHeight > clientHeight + 5;
+      const isAtBottom = scrollHeight - scrollTop <= clientHeight + 10;
+      
+      setShowScrollIndicator(hasMoreToScroll && !isAtBottom);
+    };
+
+    const sidebar = sidebarRef.current;
+    if (sidebar) {
+      sidebar.addEventListener("scroll", handleScroll, { passive: true });
+      // Verificação inicial
+      // Usamos um pequeno timeout para garantir que o DOM foi renderizado
+      const timeoutId = setTimeout(handleScroll, 100);
+      
+      // Observer para mudanças de conteúdo (ex: carregamento da registry)
+      const observer = new MutationObserver(handleScroll);
+      observer.observe(sidebar, { childList: true, subtree: true });
+
+      return () => {
+        sidebar.removeEventListener("scroll", handleScroll);
+        clearTimeout(timeoutId);
+        observer.disconnect();
+      };
+    }
+  }, []);
 
   return (
     <div className="flex min-h-screen flex-col bg-background selection:bg-foreground selection:text-background">
@@ -20,7 +57,10 @@ export default function ComponentsLayout({
       
       <div className="container-fluid flex flex-1 items-start px-6 md:px-12">
         {/* Fixed Sidebar */}
-        <aside className="fixed top-24 left-6 md:left-12 z-30 hidden h-fit w-64 shrink-0 overflow-y-auto rounded-lg border border-border bg-background/50 backdrop-blur-xl transition-all hover:bg-background/80 lg:block no-scrollbar shadow-2xl shadow-foreground/5">
+        <aside 
+          ref={sidebarRef}
+          className="fixed h-[500px] top-24 left-6 md:left-12 z-30 hidden [&::-webkit-scrollbar]:hidden w-64 shrink-0 overflow-y-auto rounded-lg border border-border bg-background/50 backdrop-blur-xl transition-all hover:bg-background/80 lg:block no-scrollbar shadow-2xl shadow-foreground/5"
+        >
           <div className="flex flex-col gap-2 p-4">
             <div className="mb-4">
                <h4 className="px-2 text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground">
@@ -40,7 +80,24 @@ export default function ComponentsLayout({
               >
                 {item.name}
               </Link>
+
             ))}
+            
+            <AnimatePresence>
+              {showScrollIndicator && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  className="sticky bottom-2 flex justify-center py-2"
+                >
+                  <div className="bg-foreground/5 backdrop-blur-md rounded-full px-4 py-1 w-full flex items-center justify-center gap-2">
+                    <span className="text-[8px] font-mono uppercase tracking-widest text-muted-foreground">Scroll</span>
+                    <ChevronDown className="w-2 h-2 animate-bounce" />
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </aside>
 

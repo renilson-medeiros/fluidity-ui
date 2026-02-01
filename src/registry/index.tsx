@@ -184,68 +184,131 @@ export const registry: Record<string, RegistryComponent> = {
     ],
     usageExample: "import { CircularText } from '@/components/blocks/circular-text';\n\n<CircularText \n  text='RECURSO ORGANIZADO • ' \n  radius={100} \n  duration={20}\n/>"
   },
-  // UI PRIMITIVES
-  "button": {
-    name: "Button",
-    description: "Botão base com múltiplas variantes e suporte a animações.",
-    component: require("@/components/ui/button/button").Button,
-    file: "src/components/ui/button/button.tsx",
-    type: "ui",
-    dependencies: ["class-variance-authority"],
-    installationSteps: ["Instale CVA: `npm install class-variance-authority`"]
+  "contact-form": {
+    name: "Contact Form",
+    description: "Cartão de contato elegante com inputs validados e layout responsivo.",
+    component: require("@/components/blocks/contact-form").ContactForm,
+    file: "src/components/blocks/contact-form.tsx",
+    type: "block",
+    installationSteps: [
+      "Copie `src/components/blocks/contact-form.tsx`.",
+      "Certifique-se de ter os componentes de UI: `Button`, `Input`, `Label`, `Card`."
+    ],
+    usageExample: "import { ContactForm } from '@/components/blocks/contact-form';\n\n<ContactForm />"
   },
-  "badge": {
-    name: "Badge",
-    description: "Indicador visual de status ou categoria.",
-    component: require("@/components/ui/badge/badge").Badge,
-    file: "src/components/ui/badge/badge.tsx",
-    type: "ui",
-    dependencies: ["class-variance-authority"]
+  "expandable-services": {
+    name: "Expandable Services",
+    description: "Lista de serviços interativa que expande ao passar o mouse, revelando detalhes e imagens.",
+    component: require("@/components/blocks/expandable-services").default,
+    file: "src/components/blocks/expandable-services.tsx",
+    type: "block",
+    dependencies: ["framer-motion", "lucide-react"],
+    installationSteps: [
+      "Instale: `npm install framer-motion lucide-react`.",
+      "Copie `src/components/blocks/expandable-services.tsx`."
+    ],
+    usageExample: "import ExpandableServices from '@/components/blocks/expandable-services';\n\n<ExpandableServices />"
   },
-  "card": {
-    name: "Card",
-    description: "Container básico para estruturar conteúdo.",
-    component: require("@/components/ui/card/card").Card,
-    file: "src/components/ui/card/card.tsx",
-    type: "ui"
+  "faq-section": {
+    name: "FAQ Section",
+    description: "Seção de perguntas frequentes baseada em Accordion, limpa e funcional.",
+    component: require("@/components/blocks/faq-section").FAQSection,
+    file: "src/components/blocks/faq-section.tsx",
+    type: "block",
+    installationSteps: [
+      "Copie `src/components/blocks/faq-section.tsx`.",
+      "Certifique-se de ter o componente de UI `Accordion`."
+    ],
+    usageExample: "import { FAQSection } from '@/components/blocks/faq-section';\n\n<FAQSection />"
   },
-  "avatar": {
-    name: "Avatar",
-    description: "Componente de imagem de perfil com fallback.",
-    component: require("@/components/ui/avatar/avatar").Avatar,
-    file: "src/components/ui/avatar/avatar.tsx",
-    type: "ui",
-    dependencies: ["@radix-ui/react-avatar"]
+  "flip-text-avatar": {
+    name: "Flip Text Avatar",
+    description: "Avatar que rotaciona para revelar um texto circular animado no verso.",
+    component: require("@/components/blocks/flip-text-avatar").FlipTextAvatar,
+    file: "src/components/blocks/flip-text-avatar.tsx",
+    type: "block",
+    dependencies: ["framer-motion"],
+    props: {
+        imageUrl: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&h=400&fit=crop",
+        alt: "Avatar",
+        text: "FLUIDITY UI • AVATAR ANIMADO • ",
+    },
+    installationSteps: [
+      "Instale `framer-motion`.",
+      "Copie `src/components/blocks/flip-text-avatar.tsx`."
+    ],
+    usageExample: "import { FlipTextAvatar } from '@/components/blocks/flip-text-avatar';\n\n<FlipTextAvatar \n  imageUrl='...' \n  text='TEXTO CIRCULAR • ' \n/>"
   },
-  "input": {
-    name: "Input",
-    description: "Campo de entrada de texto estilizado.",
-    component: require("@/components/ui/input/input").Input,
-    file: "src/components/ui/input/input.tsx",
-    type: "ui"
+  "minimal-footer": {
+    name: "Minimal Footer",
+    description: "Rodapé clean com links sociais, copyright e navegação essencial.",
+    component: require("@/components/blocks/minimal-footer").MinimalFooter,
+    file: "src/components/blocks/minimal-footer.tsx",
+    type: "block",
+    dependencies: ["lucide-react"],
+    installationSteps: [
+      "Copie `src/components/blocks/minimal-footer.tsx`."
+    ],
+    usageExample: "import { MinimalFooter } from '@/components/blocks/minimal-footer';\n\n<MinimalFooter />"
   },
-  "label": {
-    name: "Label",
-    description: "Rótulo acessível para campos de formulário.",
-    component: require("@/components/ui/label/label").Label,
-    file: "src/components/ui/label/label.tsx",
-    type: "ui",
-    dependencies: ["@radix-ui/react-label"]
+  "pricing-table": {
+    name: "Pricing Table",
+    description: "Grade de preços com destaque para planos populares e lista de recursos.",
+    component: require("@/components/blocks/pricing-table").PricingTable,
+    file: "src/components/blocks/pricing-table.tsx",
+    type: "block",
+    dependencies: ["lucide-react"],
+    installationSteps: [
+      "Copie `src/components/blocks/pricing-table.tsx`.",
+      "Instale `lucide-react`."
+    ],
+    usageExample: "import { PricingTable } from '@/components/blocks/pricing-table';\n\n<PricingTable />"
   },
-  "sheet": {
-    name: "Sheet",
-    description: "Painel lateral (drawer) para navegação ou formulários.",
-    component: require("@/components/ui/sheet/sheet").Sheet,
-    file: "src/components/ui/sheet/sheet.tsx",
-    type: "ui",
-    dependencies: ["@radix-ui/react-dialog", "framer-motion"]
+  "simple-navbar": {
+    name: "Simple Navbar",
+    description: "Navegação fixa com suporte a menu mobile e efeito de blur glassmorphism.",
+    component: require("@/components/blocks/simple-navbar").SimpleNavbar,
+    file: "src/components/blocks/simple-navbar.tsx",
+    type: "block",
+    dependencies: ["lucide-react"],
+    installationSteps: [
+      "Copie `src/components/blocks/simple-navbar.tsx`."
+    ],
+    usageExample: "import { SimpleNavbar } from '@/components/blocks/simple-navbar';\n\n<SimpleNavbar />"
   },
-  "utils": {
-    name: "Utils",
-    description: "Utilitário cn para merge de classes Tailwind.",
-    component: null as any,
-    file: "src/lib/utils.ts",
-    type: "ui",
-    dependencies: ["clsx", "tailwind-merge"]
+  "stats-card": {
+    name: "Stats Card",
+    description: "Seção de métricas e números importantes para destacar conquistas.",
+    component: require("@/components/blocks/stats-card").StatsCard,
+    file: "src/components/blocks/stats-card.tsx",
+    type: "block",
+    installationSteps: [
+      "Copie `src/components/blocks/stats-card.tsx`."
+    ],
+    usageExample: "import { StatsCard } from '@/components/blocks/stats-card';\n\n<StatsCard />"
+  },
+  "team-member": {
+    name: "Team Member",
+    description: "Card de perfil de membro da equipe com biografia e links sociais.",
+    component: require("@/components/blocks/team-member").TeamMember,
+    file: "src/components/blocks/team-member.tsx",
+    type: "block",
+    dependencies: ["lucide-react"],
+    installationSteps: [
+      "Copie `src/components/blocks/team-member.tsx`."
+    ],
+    usageExample: "import { TeamMember } from '@/components/blocks/team-member';\n\n<TeamMember />"
+  },
+  "testimonial-card": {
+    name: "Testimonial Card",
+    description: "Card de depoimento individual com avaliação por estrelas e citação.",
+    component: require("@/components/blocks/testimonial-card").TestimonialCard,
+    file: "src/components/blocks/testimonial-card.tsx",
+    type: "block",
+    dependencies: ["lucide-react"],
+    installationSteps: [
+      "Copie `src/components/blocks/testimonial-card.tsx`."
+    ],
+    usageExample: "import { TestimonialCard } from '@/components/blocks/testimonial-card';\n\n<TestimonialCard />"
   }
 };
