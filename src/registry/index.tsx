@@ -8,6 +8,7 @@ export interface RegistryComponent {
   dependencies?: string[];
   type: "block" | "ui";
   props?: Record<string, any>;
+  stars?: number;
   installationSteps?: string[];
   usageExample?: string;
 }
@@ -19,6 +20,7 @@ export const registry: Record<string, RegistryComponent> = {
     component: require("@/components/blocks/text-reveal").TextReveal,
     file: "src/components/blocks/text-reveal.tsx",
     type: "block",
+    stars: 120,
     dependencies: ["framer-motion"],
     props: {
       text: "O Fluidity UI é uma biblioteca de componentes práticos para criar interfaces de alta qualidade e acessíveis.",
@@ -36,6 +38,7 @@ export const registry: Record<string, RegistryComponent> = {
     component: require("@/components/blocks/infinite-text-loop").InfiniteTextLoop,
     file: "src/components/blocks/infinite-text-loop.tsx",
     type: "block",
+    stars: 85,
     dependencies: ["framer-motion"],
     props: {
       text: "LOOP INFINITO • FLUIDITY UI • NEXT.JS • ",
@@ -53,6 +56,7 @@ export const registry: Record<string, RegistryComponent> = {
     component: require("@/components/blocks/horizontal-project-scroll").HorizontalProjectScroll,
     file: "src/components/blocks/horizontal-project-scroll.tsx",
     type: "block",
+    stars: 150,
     dependencies: ["framer-motion", "lucide-react"],
     installationSteps: [
       "Instale: `npm install framer-motion lucide-react`",
@@ -67,6 +71,7 @@ export const registry: Record<string, RegistryComponent> = {
     component: require("@/components/blocks/cursor-demo").CursorDemo,
     file: "src/components/blocks/cursor-demo.tsx",
     type: "block",
+    stars: 42,
     dependencies: ["framer-motion"],
     installationSteps: [
       "Copie `src/components/ui/project-cursor.tsx`.",
@@ -81,6 +86,7 @@ export const registry: Record<string, RegistryComponent> = {
     component: require("@/components/blocks/hero-section").HeroSection,
     file: "src/components/blocks/hero-section.tsx",
     type: "block",
+    stars: 200,
     dependencies: ["framer-motion", "lucide-react"],
     installationSteps: [
       "Instale: `npm install framer-motion lucide-react`",

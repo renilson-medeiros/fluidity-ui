@@ -67,20 +67,39 @@ export default function ComponentsLayout({
                  Componentes
                </h4>
             </div>
-            {Object.entries(registry).map(([slug, item]) => (
+            {Object.entries(registry)
+              .sort(([, a], [, b]) => {
+                // Primeiro ordena por estrelas (descendente)
+                const starsA = a.stars || 0;
+                const starsB = b.stars || 0;
+                if (starsB !== starsA) return starsB - starsA;
+                // Depois por nome (ascendente)
+                return a.name.localeCompare(b.name);
+              })
+              .map(([slug, item]) => (
               <Link
                 key={slug}
                 href={`/components/${slug}`}
                 className={cn(
-                  "flex w-full items-center rounded-lg px-3 py-2.5 text-sm font-medium transition-all hover:bg-foreground/5 active:scale-95",
+                  "flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium transition-all hover:bg-foreground/5 active:scale-95",
                   pathname === `/components/${slug}`
-                    ? "bg-foreground text-background hover:bg-foreground/90"
+                    ? "bg-foreground text-background hover:bg-foreground/90 shadow-lg"
                     : "text-muted-foreground hover:text-foreground"
                 )}
               >
-                {item.name}
+                <span>{item.name}</span>
+                {item.stars && item.stars > 100 && (
+                   <div className="flex items-center gap-1 opacity-60">
+                     <span className="text-[10px] font-mono">{item.stars}</span>
+                     <motion.span
+                       animate={{ scale: [1, 1.2, 1] }}
+                       transition={{ repeat: Infinity, duration: 2 }}
+                     >
+                       ⭐
+                     </motion.span>
+                   </div>
+                )}
               </Link>
-
             ))}
             
             <AnimatePresence>
