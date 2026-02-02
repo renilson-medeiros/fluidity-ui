@@ -10,7 +10,7 @@ export function InteractiveCursor() {
   const containerRef2 = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+    <div className="grid px-4 py-4 grid-cols-1 md:grid-cols-2 gap-8 w-full">
       {/* Demo 1: Basic View Project */}
       <div
         ref={containerRef1}
@@ -23,7 +23,7 @@ export function InteractiveCursor() {
 
         <ProjectCursor
           containerRef={containerRef1}
-          className="w-20 h-20 bg-foreground text-background"
+          className="w-24 h-24 bg-foreground backdrop-blur-md text-background"
         >
           <ArrowUpRight className="w-8 h-8" />
         </ProjectCursor>
@@ -40,12 +40,12 @@ export function InteractiveCursor() {
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-foreground/20" />
 
         <ProjectCursor
           containerRef={containerRef2}
           text="Discover"
-          className="w-24 h-24 bg-white/20 backdrop-blur-md text-white border-2 border-white/50"
+          className="w-24 h-24 bg-background/20 backdrop-blur-md text-background border-2 border-background/50"
         />
       </div>
     </div>

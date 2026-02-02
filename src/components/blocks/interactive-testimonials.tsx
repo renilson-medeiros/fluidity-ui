@@ -42,7 +42,7 @@ export function InteractiveTestimonials() {
   const activeTestimonial = testimonials.find(t => t.id === activeId) || testimonials[0];
 
   return (
-    <div className="w-full py-24 flex flex-col items-center justify-center bg-background text-foreground">
+    <div className="w-full py-4 flex flex-col md:items-center justify-center bg-background text-foreground">
         <div className="max-w-4xl mx-auto px-4 text-center space-y-12">
             
             {/* Quote Section */}

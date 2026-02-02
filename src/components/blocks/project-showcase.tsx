@@ -83,7 +83,7 @@ export default function ProjectCard() {
       {projects.map((project, index) => (
         <div 
           key={project.id}
-          className="sticky px-16 w-full border border-foreground/10 bg-background backdrop-blur-sm rounded-lg overflow-hidden transition-all duration-300"
+          className="sticky px-6 md:px-16 w-full border border-foreground/10 bg-background backdrop-blur-sm rounded-lg overflow-hidden transition-all duration-300"
           style={{ 
             top: `${100 + (index * 10)}px`,
             zIndex: index + 1
@@ -91,7 +91,7 @@ export default function ProjectCard() {
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 min-h-[500px] lg:min-h-[600px]">
             {/* Left Content */}
-            <div className="flex flex-col justify-between py-16">
+            <div className="flex flex-col justify-center md:justify-between md:py-16">
               <div className="space-y-6 lg:space-y-8">
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground leading-tight">
                   {project.title}
@@ -101,13 +101,13 @@ export default function ProjectCard() {
                   {project.description}
                 </p>
                 
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col md:gap-3 gap-1">
                   {project.tags.map((tag, i) => (
                     <div 
                       key={i}
                       className="flex"
                     >
-                      <Badge className='flex gap-3 py-3'>
+                      <Badge className='flex border-foreground/10 gap-3 py-3'>
                         <div className={`w-4.5 h-4.5 rounded-full bg-linear-to-br from-foreground to-foreground/60`} />
                         <span className="text-foreground text-xs font-normal font-sans">
                           {tag.label}
@@ -118,10 +118,10 @@ export default function ProjectCard() {
                 </div>
               </div>
 
-              <div className="mt-8">
-                <Link href={project.link} className="mt-8">
+              <div className="md:mt-8 mt-6">
+                <Link href={project.link} className="md:mt-8 mt-4">
                     <AnimatedButton 
-                      variant="link" 
+                      variant="default" 
                       size="md"
                     >
                         Ver Projeto

@@ -63,12 +63,12 @@ export function HorizontalProjectScroll() {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
 
   return (
-    <section ref={targetRef} className="relative h-[400vh] bg-background">
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+    <section ref={targetRef} className="relative h-[500vh] md:h-[600vh] bg-background">
+      <div className="sticky top-20 md:top-0 flex h-[calc(100vh - 200rem)] md:h-screen items-center md:items-center overflow-hidden">
 
-        <motion.div style={{ x }} className="flex gap-12 px-6 md:px-12 pt-32 md:pt-0 items-center">
+        <motion.div style={{ x }} className="flex gap-12 px-6 md:px-12 pt-2 md:pt-0 items-center">
           {/* Spacer for the header if needed */}
-          <div className="w-[2.5vw] md:w-0 shrink-0" /> 
+          <div className="w-[2vw] md:w-0 shrink-0" /> 
           
             {projects.map((project) => (
               <ProjectCard key={project.id} project={project} />

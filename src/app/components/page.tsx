@@ -4,6 +4,7 @@ import { registry } from "@/registry";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge/badge";
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 export default function ComponentsGallery() {
   return (
@@ -16,6 +17,16 @@ export default function ComponentsGallery() {
           Navegue por nossa coleção de blocos criativos e primitivos interativos de alto impacto.
         </p>
       </div>
+
+      <Link href="/preview">
+        <Button
+          variant="default"
+          className="text-xs w-full mb-8"
+        >
+          Preview de todos os componentes
+        </Button>
+      </Link>
+      
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {Object.entries(registry).map(([slug, item], index) => (

@@ -73,7 +73,7 @@ export function ProjectCursor({ text, children, className, containerRef }: Proje
       transition={{ type: "spring", stiffness: 260, damping: 20 }}
     >
       <div className="px-2 text-center flex items-center justify-center">
-        {children ? children : text || "View Project"}
+        {children ? children : text || " "}
       </div>
     </motion.div>
   );
