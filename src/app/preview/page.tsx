@@ -10,7 +10,6 @@ import { InfiniteTextLoop } from "@/components/blocks/infinite-text-loop";
 import { FeatureGridShowcase } from "@/components/blocks/feature-grid-showcase";
 import ProjectShowcase from "@/components/blocks/project-showcase";
 import { HorizontalProjectScroll } from "@/components/blocks/horizontal-project-scroll";
-import { InteractiveCursor } from "@/components/blocks/interactive-cursor";
 import { InteractiveTestimonials } from "@/components/blocks/interactive-testimonials";
 import { ScrollingGallery } from "@/components/blocks/scrolling-gallery";
 import { CircularText } from "@/components/blocks/circular-text";
@@ -39,22 +38,17 @@ export default function Preview() {
       <main className="container mx-auto px-4 md:px-8 space-y-32 py-24 pt-48">
 
         <FloatingNav />
-        
-        <InteractiveCursor 
-          containerRef={containerRef} 
-          text="FLUIDITY UI"
-        />
 
         <section id="marquee">
           <InfiniteTextLoop text="DESIGN IMPACTANTE • FLUIDITY UI • INTERATIVIDADE • " />
         </section>
 
-        <section id="hero">
-          <TextReveal text="Fluidity UI: Experiências Digitais que Fluem no Ritmo da sua Criatividade" />
-        </section>
-
         <section id="expandable">
           <ExpandableServices />
+        </section>
+
+        <section id="hero">
+          <TextReveal text="Fluidity UI: Experiências Digitais que Fluem no Ritmo da sua Criatividade" />
         </section>
 
         <section id="services">

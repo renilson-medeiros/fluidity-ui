@@ -123,7 +123,7 @@ const DEFAULT_SERVICES = [
 ];
 
 export function ServicesAccordion({ items = DEFAULT_SERVICES }: { items?: typeof DEFAULT_SERVICES }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(0); // UI UX Design open by default like image
+  const [openIndex, setOpenIndex] = useState<number | null>(); // UI UX Design open by default like image
 
   return (
     <div className="w-full bg-background text-foreground py-4 px-1">

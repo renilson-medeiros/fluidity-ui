@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { ArrowUpRight, MoveUpRight } from "lucide-react";
@@ -60,15 +60,33 @@ export function HorizontalProjectScroll() {
     target: targetRef,
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // const scrollHeight = isMobile ? "auto" : `${projects.length * 120}vh`;
+
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", isMobile ? "0%" : `-${(projects.length - 2) * 65}%`]);
 
   return (
-    <section ref={targetRef} className="relative h-[500vh] md:h-[600vh] bg-background">
-      <div className="sticky top-20 md:top-0 flex h-[calc(100vh - 200rem)] md:h-screen items-center md:items-center overflow-hidden">
+    <section 
+    ref={targetRef} 
+    // style={{ height: scrollHeight }}
+    className="relative h-auto md:h-[600vh] bg-background"
+    >
+      <div className="sticky top-20 md:top-0 flex h-auto md:h-screen items-center overflow-hidden">
 
-        <motion.div style={{ x }} className="flex gap-12 px-6 md:px-12 pt-2 md:pt-0 items-center">
+        <motion.div 
+          style={!isMobile ? { x } : {}} 
+          className="flex flex-col md:flex-row gap-20 md:gap-12 px-0 md:px-12 py-20 md:py-0 items-center w-full"
+        >
           {/* Spacer for the header if needed */}
-          <div className="w-[2vw] md:w-0 shrink-0" /> 
+          <div className="hidden md:block w-0 md:w-0 shrink-0" /> 
           
             {projects.map((project) => (
               <ProjectCard key={project.id} project={project} />
@@ -86,7 +104,13 @@ function ProjectCard({ project }: { project: Project }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="group flex flex-col gap-6 shrink-0 w-[80vw] md:w-[45vw]">
+    <motion.div 
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="group w-full h-full flex flex-col gap-6 shrink-0 px-6 md:px-0 md:w-[45vw]"
+    >
       {/* Image Container with Custom Cursor */}
       <div 
         ref={containerRef}
@@ -124,6 +148,6 @@ function ProjectCard({ project }: { project: Project }) {
             <span className="text-xs md:text-sm text-muted-foreground font-light">/ {project.category}</span>
          </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
