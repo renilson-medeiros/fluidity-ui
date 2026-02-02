@@ -42,14 +42,14 @@ export function FlipTextAvatar({
       >
         {/* Front: Image */}
         <div 
-          className="absolute inset-0 w-full h-full backface-hidden rounded-full overflow-hidden border-4 border-background shadow-xl"
+          className="rounded-full inset-0 w-full h-full backface-hidden overflow-hidden border-4 border-background shadow-xl"
           style={{ backfaceVisibility: "hidden" }}
         >
           <Image
             src={imageUrl}
             alt={alt}
             fill
-            className="object-cover"
+            className="object-cover rounded-full"
           />
         </div>
 

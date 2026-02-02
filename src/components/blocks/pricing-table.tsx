@@ -31,7 +31,7 @@ export function PricingTable() {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div className="grid mt-4 grid-cols-1 md:grid-cols-3 gap-8">
       {plans.map((plan) => (
         <Card 
             key={plan.name} 

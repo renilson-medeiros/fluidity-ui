@@ -22,7 +22,7 @@ export const TextReveal = ({ text, className }: TextRevealProps) => {
     <p
       ref={container}
       className={cn(
-        "flex flex-wrap justify-center text-4xl md:text-6xl font-bold leading-tight max-w-4xl mx-auto",
+        "flex flex-wrap mt-4 justify-center text-4xl md:text-6xl font-bold leading-tight max-w-4xl mx-auto",
         className
       )}
     >
@@ -64,7 +64,7 @@ const Char = ({ children, progress, range }: { children: string; progress: Motio
   
   return (
     <span className="relative">
-      <span className="absolute opacity-20">{children}</span>
+      <span className="absolute h-[500px] opacity-20">{children}</span>
       <motion.span style={{ opacity: opacity }} className="text-foreground">
         {children}
       </motion.span>

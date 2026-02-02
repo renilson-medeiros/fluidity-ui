@@ -106,7 +106,7 @@ export default async function ComponentPage({ params }: PageProps) {
 
         {/* Preview Tab - Pure Rendering */}
         <TabsContent value="preview" className="mt-0 outline-none">
-           <div className="relative px-4 min-h-[500px] flex items-center justify-center overflow-visible bg-background/50 backdrop-blur-sm shadow-foreground/5">
+           <div className="relative min-h-[500px] flex items-start justify-start overflow-visible bg-background/50 backdrop-blur-sm shadow-foreground/5">
               {/* Pure Component Rendering */}
               <div className="w-full">
                 <Component {...item.props} />

@@ -43,3 +43,6 @@ next-env.d.ts
 # fluidity ui
 fluidity.json
 build_log*
+
+# agents
+.agent/

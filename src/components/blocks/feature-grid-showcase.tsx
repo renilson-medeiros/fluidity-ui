@@ -3,7 +3,7 @@
 import { FeatureGrid } from "./feature-grid";
 import { Layers, Box, Zap } from "lucide-react";
 
-export function FeatureGridDemo() {
+export function FeatureGridShowcase() {
   const features = [
     {
       title: "Native Performance",

@@ -61,11 +61,11 @@ export const registry: Record<string, RegistryComponent> = {
     ],
     usageExample: "import { HorizontalProjectScroll } from '@/components/blocks/horizontal-project-scroll';\n\n// A altura do container controla a velocidade do scroll\n<div className='h-[300vh]'>\n  <HorizontalProjectScroll />\n</div>"
   },
-  "cursor-demo": {
-    name: "Cursor Demo",
+  "interactive-cursor": {
+    name: "Interactive Cursor",
     description: "Seguidor de cursor personalizado projetado para containers específicos.",
-    component: require("@/components/blocks/cursor-demo").CursorDemo,
-    file: "src/components/blocks/cursor-demo.tsx",
+    component: require("@/components/blocks/interactive-cursor").InteractiveCursor,
+    file: "src/components/blocks/interactive-cursor.tsx",
     type: "block",
     dependencies: ["framer-motion"],
     installationSteps: [
@@ -73,22 +73,22 @@ export const registry: Record<string, RegistryComponent> = {
       "Use `useRef` para capturar o container onde o cursor deve atuar.",
       "Passe a ref para o componente `<ProjectCursor containerRef={ref} />`."
     ],
-    usageExample: "import { ProjectCursor } from '@/components/ui/project-cursor';\nimport { useRef } from 'react';\n\nconst containerRef = useRef(null);\n\n<div ref={containerRef} className='cursor-none relative h-[400px]'>\n  <ProjectCursor \n     containerRef={containerRef} \n     text='VER'\n     className='bg-black text-white'\n  />\n</div>"
+    usageExample: "import { InteractiveCursor } from '@/components/blocks/interactive-cursor';\nimport { useRef } from 'react';\n\nconst containerRef = useRef(null);\n\n<div ref={containerRef} className='cursor-none relative h-[400px]'>\n  <InteractiveCursor \n     containerRef={containerRef} \n     text='VER'\n     className='bg-black text-white'\n  />\n</div>"
   },
-  "hero-section": {
-    name: "Hero Section",
-    description: "Seção de impacto com layout dividido e animações sincronizadas.",
-    component: require("@/components/blocks/hero-section").HeroSection,
-    file: "src/components/blocks/hero-section.tsx",
-    type: "block",
-    dependencies: ["framer-motion", "lucide-react"],
-    installationSteps: [
-      "Instale: `npm install framer-motion lucide-react`",
-      "Copie `src/components/blocks/hero-section.tsx`.",
-      "Configure as cores secundárias no seu `tailwind.config.js` se necessário."
-    ],
-    usageExample: "import { HeroSection } from '@/components/blocks/hero-section';\n\n<HeroSection />"
-  },
+  // "hero-section": {
+  //   name: "Hero Section",
+  //   description: "Seção de impacto com layout dividido e animações sincronizadas.",
+  //   component: require("@/components/blocks/hero-section").HeroSection,
+  //   file: "src/components/blocks/hero-section.tsx",
+  //   type: "block",
+  //   dependencies: ["framer-motion", "lucide-react"],
+  //   installationSteps: [
+  //     "Instale: `npm install framer-motion lucide-react`",
+  //     "Copie `src/components/blocks/hero-section.tsx`.",
+  //     "Configure as cores secundárias no seu `tailwind.config.js` se necessário."
+  //   ],
+  //   usageExample: "import { HeroSection } from '@/components/blocks/hero-section';\n\n<HeroSection />"
+  // },
   "project-showcase": {
     name: "Project Showcase",
     description: "Grade adaptativa para exibir projetos profissionais com badges.",
@@ -105,8 +105,8 @@ export const registry: Record<string, RegistryComponent> = {
   "feature-grid": {
     name: "Feature Grid",
     description: "Layout inspirado em bento-grids para destaques de produto.",
-    component: require("@/components/blocks/feature-grid-demo").FeatureGridDemo,
-    file: "src/components/blocks/feature-grid-demo.tsx",
+    component: require("@/components/blocks/feature-grid-showcase").FeatureGridShowcase,
+    file: "src/components/blocks/feature-grid-showcase.tsx",
     type: "block",
     dependencies: ["framer-motion", "lucide-react"],
     installationSteps: [
@@ -128,19 +128,19 @@ export const registry: Record<string, RegistryComponent> = {
     ],
     usageExample: "import { InteractiveTestimonials } from '@/components/blocks/interactive-testimonials';\n\n<InteractiveTestimonials />"
   },
-  "pricing-section": {
-    name: "Pricing Section",
-    description: "Tabelas de preços modernas e claras.",
-    component: require("@/components/blocks/pricing-section").PricingSection,
-    file: "src/components/blocks/pricing-section.tsx",
-    type: "block",
-    dependencies: ["framer-motion", "lucide-react"],
-    installationSteps: [
-      "Copie `src/components/blocks/pricing-section.tsx`.",
-      "Ajuste os valores e planos no array de dados do componente."
-    ],
-    usageExample: "import { PricingSection } from '@/components/blocks/pricing-section';\n\n<PricingSection />"
-  },
+  // "pricing-section": {
+  //   name: "Pricing Section",
+  //   description: "Tabelas de preços modernas e claras.",
+  //   component: require("@/components/blocks/pricing-section").PricingSection,
+  //   file: "src/components/blocks/pricing-section.tsx",
+  //   type: "block",
+  //   dependencies: ["framer-motion", "lucide-react"],
+  //   installationSteps: [
+  //     "Copie `src/components/blocks/pricing-section.tsx`.",
+  //     "Ajuste os valores e planos no array de dados do componente."
+  //   ],
+  //   usageExample: "import { PricingSection } from '@/components/blocks/pricing-section';\n\n<PricingSection />"
+  // },
   "floating-nav": {
     name: "Floating Nav",
     description: "Barra de navegação inteligente que reage à rolagem.",
@@ -184,18 +184,18 @@ export const registry: Record<string, RegistryComponent> = {
     ],
     usageExample: "import { CircularText } from '@/components/blocks/circular-text';\n\n<CircularText \n  text='RECURSO ORGANIZADO • ' \n  radius={100} \n  duration={20}\n/>"
   },
-  "contact-form": {
-    name: "Contact Form",
-    description: "Cartão de contato elegante com inputs validados e layout responsivo.",
-    component: require("@/components/blocks/contact-form").ContactForm,
-    file: "src/components/blocks/contact-form.tsx",
-    type: "block",
-    installationSteps: [
-      "Copie `src/components/blocks/contact-form.tsx`.",
-      "Certifique-se de ter os componentes de UI: `Button`, `Input`, `Label`, `Card`."
-    ],
-    usageExample: "import { ContactForm } from '@/components/blocks/contact-form';\n\n<ContactForm />"
-  },
+  // "contact-form": {
+  //   name: "Contact Form",
+  //   description: "Cartão de contato elegante com inputs validados e layout responsivo.",
+  //   component: require("@/components/blocks/contact-form").ContactForm,
+  //   file: "src/components/blocks/contact-form.tsx",
+  //   type: "block",
+  //   installationSteps: [
+  //     "Copie `src/components/blocks/contact-form.tsx`.",
+  //     "Certifique-se de ter os componentes de UI: `Button`, `Input`, `Label`, `Card`."
+  //   ],
+  //   usageExample: "import { ContactForm } from '@/components/blocks/contact-form';\n\n<ContactForm />"
+  // },
   "expandable-services": {
     name: "Expandable Services",
     description: "Lista de serviços interativa que expande ao passar o mouse, revelando detalhes e imagens.",
@@ -221,6 +221,19 @@ export const registry: Record<string, RegistryComponent> = {
     ],
     usageExample: "import { FAQSection } from '@/components/blocks/faq-section';\n\n<FAQSection />"
   },
+  "services-accordion": {
+    name: "Services Accordion",
+    description: "Lista de serviços estilo FAQ que expande para mostrar sub-serviços e imagens com animações premium.",
+    component: require("@/components/blocks/services-accordion").ServicesAccordion,
+    file: "src/components/blocks/services-accordion.tsx",
+    type: "block",
+    dependencies: ["framer-motion", "lucide-react"],
+    installationSteps: [
+      "Instale: `npm install framer-motion lucide-react`.",
+      "Copie `src/components/blocks/services-accordion.tsx`."
+    ],
+    usageExample: "import { ServicesAccordion } from '@/components/blocks/services-accordion';\n\n<ServicesAccordion />"
+  },
   "flip-text-avatar": {
     name: "Flip Text Avatar",
     description: "Avatar que rotaciona para revelar um texto circular animado no verso.",
@@ -239,18 +252,18 @@ export const registry: Record<string, RegistryComponent> = {
     ],
     usageExample: "import { FlipTextAvatar } from '@/components/blocks/flip-text-avatar';\n\n<FlipTextAvatar \n  imageUrl='...' \n  text='TEXTO CIRCULAR • ' \n/>"
   },
-  "minimal-footer": {
-    name: "Minimal Footer",
-    description: "Rodapé clean com links sociais, copyright e navegação essencial.",
-    component: require("@/components/blocks/minimal-footer").MinimalFooter,
-    file: "src/components/blocks/minimal-footer.tsx",
-    type: "block",
-    dependencies: ["lucide-react"],
-    installationSteps: [
-      "Copie `src/components/blocks/minimal-footer.tsx`."
-    ],
-    usageExample: "import { MinimalFooter } from '@/components/blocks/minimal-footer';\n\n<MinimalFooter />"
-  },
+  // "minimal-footer": {
+  //   name: "Minimal Footer",
+  //   description: "Rodapé clean com links sociais, copyright e navegação essencial.",
+  //   component: require("@/components/blocks/minimal-footer").MinimalFooter,
+  //   file: "src/components/blocks/minimal-footer.tsx",
+  //   type: "block",
+  //   dependencies: ["lucide-react"],
+  //   installationSteps: [
+  //     "Copie `src/components/blocks/minimal-footer.tsx`."
+  //   ],
+  //   usageExample: "import { MinimalFooter } from '@/components/blocks/minimal-footer';\n\n<MinimalFooter />"
+  // },
   "pricing-table": {
     name: "Pricing Table",
     description: "Grade de preços com destaque para planos populares e lista de recursos.",
@@ -264,29 +277,29 @@ export const registry: Record<string, RegistryComponent> = {
     ],
     usageExample: "import { PricingTable } from '@/components/blocks/pricing-table';\n\n<PricingTable />"
   },
-  "simple-navbar": {
-    name: "Simple Navbar",
-    description: "Navegação fixa com suporte a menu mobile e efeito de blur glassmorphism.",
-    component: require("@/components/blocks/simple-navbar").SimpleNavbar,
-    file: "src/components/blocks/simple-navbar.tsx",
-    type: "block",
-    dependencies: ["lucide-react"],
-    installationSteps: [
-      "Copie `src/components/blocks/simple-navbar.tsx`."
-    ],
-    usageExample: "import { SimpleNavbar } from '@/components/blocks/simple-navbar';\n\n<SimpleNavbar />"
-  },
-  "stats-card": {
-    name: "Stats Card",
-    description: "Seção de métricas e números importantes para destacar conquistas.",
-    component: require("@/components/blocks/stats-card").StatsCard,
-    file: "src/components/blocks/stats-card.tsx",
-    type: "block",
-    installationSteps: [
-      "Copie `src/components/blocks/stats-card.tsx`."
-    ],
-    usageExample: "import { StatsCard } from '@/components/blocks/stats-card';\n\n<StatsCard />"
-  },
+  // "simple-navbar": {
+  //   name: "Simple Navbar",
+  //   description: "Navegação fixa com suporte a menu mobile e efeito de blur glassmorphism.",
+  //   component: require("@/components/blocks/simple-navbar").SimpleNavbar,
+  //   file: "src/components/blocks/simple-navbar.tsx",
+  //   type: "block",
+  //   dependencies: ["lucide-react"],
+  //   installationSteps: [
+  //     "Copie `src/components/blocks/simple-navbar.tsx`."
+  //   ],
+  //   usageExample: "import { SimpleNavbar } from '@/components/blocks/simple-navbar';\n\n<SimpleNavbar />"
+  // },
+  // "stats-card": {
+  //   name: "Stats Card",
+  //   description: "Seção de métricas e números importantes para destacar conquistas.",
+  //   component: require("@/components/blocks/stats-card").StatsCard,
+  //   file: "src/components/blocks/stats-card.tsx",
+  //   type: "block",
+  //   installationSteps: [
+  //     "Copie `src/components/blocks/stats-card.tsx`."
+  //   ],
+  //   usageExample: "import { StatsCard } from '@/components/blocks/stats-card';\n\n<StatsCard />"
+  // },
   "team-member": {
     name: "Team Member",
     description: "Card de perfil de membro da equipe com biografia e links sociais.",
@@ -299,16 +312,16 @@ export const registry: Record<string, RegistryComponent> = {
     ],
     usageExample: "import { TeamMember } from '@/components/blocks/team-member';\n\n<TeamMember />"
   },
-  "testimonial-card": {
-    name: "Testimonial Card",
-    description: "Card de depoimento individual com avaliação por estrelas e citação.",
-    component: require("@/components/blocks/testimonial-card").TestimonialCard,
-    file: "src/components/blocks/testimonial-card.tsx",
-    type: "block",
-    dependencies: ["lucide-react"],
-    installationSteps: [
-      "Copie `src/components/blocks/testimonial-card.tsx`."
-    ],
-    usageExample: "import { TestimonialCard } from '@/components/blocks/testimonial-card';\n\n<TestimonialCard />"
-  }
+  // "testimonial-card": {
+  //   name: "Testimonial Card",
+  //   description: "Card de depoimento individual com avaliação por estrelas e citação.",
+  //   component: require("@/components/blocks/testimonial-card").TestimonialCard,
+  //   file: "src/components/blocks/testimonial-card.tsx",
+  //   type: "block",
+  //   dependencies: ["lucide-react"],
+  //   installationSteps: [
+  //     "Copie `src/components/blocks/testimonial-card.tsx`."
+  //   ],
+  //   usageExample: "import { TestimonialCard } from '@/components/blocks/testimonial-card';\n\n<TestimonialCard />"
+  // }
 };
