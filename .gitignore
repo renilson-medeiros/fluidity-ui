@@ -43,6 +43,9 @@ next-env.d.ts
 # fluidity ui
 fluidity.json
 build_log*
+debug-cn.ts
+/dist/
+/docs/
 
 # agents
 .agent/
