@@ -80,7 +80,6 @@ export default function ComponentsLayout({
               >
                 {item.name}
               </Link>
-
             ))}
             
             <AnimatePresence>
