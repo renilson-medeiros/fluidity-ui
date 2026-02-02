@@ -5,10 +5,28 @@ import { ProjectCursor } from "@/components/ui/project-cursor";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
-export function InteractiveCursor() {
+interface InteractiveCursorProps {
+  text?: string;
+  className?: string;
+  containerRef?: React.RefObject<HTMLElement | null>;
+}
+
+export function InteractiveCursor({ text, className, containerRef }: InteractiveCursorProps = {}) {
   const containerRef1 = useRef<HTMLDivElement>(null);
   const containerRef2 = useRef<HTMLDivElement>(null);
 
+  // If containerRef is provided, it acts as a standalone cursor component
+  if (containerRef) {
+    return (
+      <ProjectCursor
+        containerRef={containerRef}
+        text={text}
+        className={className}
+      />
+    );
+  }
+
+  // Default demo grid
   return (
     <div className="grid px-4 py-4 grid-cols-1 md:grid-cols-2 gap-8 w-full">
       {/* Demo 1: Basic View Project */}
